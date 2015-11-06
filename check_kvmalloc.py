@@ -253,18 +253,18 @@ def kvmalloc_main(daemonize=False):
 
     if mode == "MEM":
         mem_ratio = float(total_vm_mem) / float(total_memory) * 100
-        if mem_ratio >= float(critical):
+        if float(mem_ratio) >= float(critical):
             status = "Critical"
-        elif mem_ratio >= float(warning):
+        elif float(mem_ratio) >= float(warning):
             status = "Warning"
 
         print mode, status, "-", "Mem Physical/VM/Util = %s/%s/%s %%|Util=%s;%s;%s;0" % (total_memory, total_vm_mem, mem_ratio, mem_ratio, warning, critical)
 
     if mode == "CPU":
         cpu_ratio = float(total_vm_cpus) / float(ncpu) * 100
-        if cpu_ratio >= float(critical):
+        if float(cpu_ratio) >= float(critical):
             status = "Critical"
-        elif cpu_ratio >= float(warning):
+        elif float(cpu_ratio) >= float(warning):
             status = "Warning"
 
         print mode, status, "-", "CPU Physical/VM/Util = %s/%s/%s %%|Util=%s;%s;%s;0" % (ncpu, total_vm_cpus, cpu_ratio, cpu_ratio, warning, critical)
